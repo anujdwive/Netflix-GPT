@@ -69,6 +69,12 @@ body {
     }
 } */
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header-container > header {
     margin-left: calc(5% + 36px);
     margin-right: calc(5% + 36px);
@@ -189,6 +195,13 @@ body {
     border-color: rgba(128, 128, 128, 0.7);
     color: white;
     
+}
+
+.login-form-inpt > .error-message {
+    color: red;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Open Sans";
 }
 
 .login-form-inpt > .login-form-btn {
