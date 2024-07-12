@@ -3,9 +3,9 @@ import Header from './Header';
 import { checkValidation } from '../utils/validation';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { addUser } from '../utils/userSlice';
 import { useDispatch } from 'react-redux';
+import { BACKGROUND_LOGO } from '../utils/constant';
 
 
 
@@ -13,7 +13,6 @@ const Login = () => {
 
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErroeMessage] = useState(null);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     
     // useRef hook give us to refreance of the element
@@ -47,12 +46,11 @@ const Login = () => {
                         addUser(
                             {uid: uid, email: email, displayName: displayName}
                         ))
-                    navigate("/browes")
                   }).catch((error) => {
                     // An error occurred
                     setErroeMessage(error.message);
                   });
-                  console.log(user);
+                //   console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -64,8 +62,7 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
-                navigate("/browes")
+                // console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -84,7 +81,7 @@ const Login = () => {
     <div className='login-ui-container'>
         <div className='login-ui'>
             <div className='login-ui-img'>
-                <img className='login-back-img' src='https://assets.nflxext.com/ffe/siteui/vlv3/335ddde7-3955-499c-b4cc-ca2eb7e1ae71/a7d20bc1-831c-4f9d-8153-11bdf7a08d23/IN-en-20240624-POP_SIGNUP_TWO_WEEKS-perspective_WEB_13cda806-d858-493e-b4aa-f2792ff965dc_medium.jpg'
+                <img className='login-back-img' src={BACKGROUND_LOGO}
                 alt='Background img' />
             </div>
                 <header className='header-big-container'><Header /></header>
