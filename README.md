@@ -30,6 +30,12 @@
 - Embaded the youtube Video and make it autoPlay and mute
 - Put Some CSS for make our WebSit beutyfull
 - Install FontAwsome for some button logo
+- Build Secondary container
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- We Create UsePopulerMovies, useUpcoming and useTopRated Coustome Hooks
+- And put the css for making our website beautyfull
 
 # Features
 - Login/Sign Up
