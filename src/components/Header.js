@@ -4,12 +4,15 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
-import { HEADER_LOGO } from '../utils/constant';
+import { HEADER_LOGO, SUPPORTED_LANGUAGE } from '../utils/constant';
+import { toggleGptSearchView } from '../utils/gptSlice';
+import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
 
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
   const handelSignOut = () => {
     signOut(auth).then(() => {
@@ -40,6 +43,15 @@ const Header = () => {
       return () => unsubscribe();
 }, []);
 
+const handelGptSearch= () => {
+  // Togle Gpt Search
+  dispatch(toggleGptSearchView());
+}
+const handleLanguageChange= (e) => {
+  // Togle Gpt Search
+  dispatch(changeLanguage(e.target.value));
+}
+
   return (
     <div className={user ? 'headerHome-container' : 'header-container'}>
       <header className={user ? 'headerHome' : 'header'}>
@@ -51,6 +63,12 @@ const Header = () => {
           
          { 
           user && <div className='logout-btn'>
+              {
+              showGptSearch && <select onChange={handleLanguageChange}>
+                {SUPPORTED_LANGUAGE.map((lang) => <option key={lang.identifire} value={lang.identifire}>{lang.name}</option>)}
+              </select>
+              }
+              <button className='search-btn' onClick={handelGptSearch}>Gpt Search</button>
               <button onClick={handelSignOut}>Sign Out</button>
           </div>
           }

@@ -6,9 +6,12 @@ import SecondryContainer from './SecondryContainer';
 import usePopulerMovies from '../hooks/usePopulerMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import GptSearchMainPage from './GptSearchMainPage';
+import { useSelector } from 'react-redux';
 
 const Browes = () => {
 
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
   useNowPlayingMovies();
   usePopulerMovies();
   useTopRatedMovies();
@@ -17,11 +20,15 @@ const Browes = () => {
   return (
     <div className='browes-big-container'>
       <div className='browes-container'>
-        <Header />
-        <MainContainer />
-      </div>
-      <div className='secondry-container'>
-      <SecondryContainer />
+          <Header />
+          {showGptSearch ? <GptSearchMainPage /> :
+          <>
+          <MainContainer />
+          <div className='secondry-container'>
+          <SecondryContainer />
+          </div>
+          </>
+          }
       </div>
     </div>
   )

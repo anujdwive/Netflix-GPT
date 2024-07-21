@@ -36,6 +36,9 @@
 - TMDB Image CDN URL
 - We Create UsePopulerMovies, useUpcoming and useTopRated Coustome Hooks
 - And put the css for making our website beautyfull
+- Gpt Search Page
+- Gpt Seacrch Bar
+- Multi Lnaguage Feature in my App
 
 # Features
 - Login/Sign Up

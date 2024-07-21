@@ -9,3 +9,6 @@ export const TMDB_API_OPTIONS = {
 };
 
 export const POSTER_PATH = "https://image.tmdb.org/t/p/w500"
+
+
+export const SUPPORTED_LANGUAGE = [{identifire: "en", name:"English"}, {identifire: "hindi", name:"Hindi"}, {identifire: "spanish", name:"Spanish"},]
